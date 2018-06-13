@@ -73,12 +73,12 @@ for /f "tokens=*" %%a in (BrainSuiteOptions) do (
 )
 )
 echo ---- Running BrainSuite Cortical Surface Extraction Sequence ----
-@rem primeiro corre o bse - ok
+@rem 1. bse
 %BrainSuiteBinDir%bse %VERBOSE% -i %1 -o %basename%.bse.%EXT% --hires %basename%.hires_mask.%EXT% %BSEOPTIONS%
 
 if %ERRORLEVEL% NEQ 0 ( echo cortical extraction halted because BSE failed to run. && exit /b 1 )
 
-@rem e agora corre o skullfinder
+@rem 2. skullfinder
 %BrainSuiteBinDir%skullfinder %VERBOSE% -i %1 -o %basename%.skullfinder.%EXT% -m %basename%.hires_mask.%EXT% %SKULLFINDEROPTIONS%
 
 if %ERRORLEVEL% NEQ 0 ( echo cortical extraction halted because BSE failed to run. && exit /b 1 )

@@ -1,0 +1,320 @@
+// MDL v1 utf8
+network  {
+  watchlist = ""
+}
+module SoBackground {
+  internal  {
+    frame = "281 345 112 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "905 498 125 145"
+        sizeHint = "125 145"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoBackground
+    rotate = TRUE
+    flip = FALSE
+    on = TRUE
+    depthBuffer = TRUE
+  }
+}
+module SoWEMRenderer {
+  internal  {
+    frame = "438 429 128 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "469 164 443 500"
+        sizeHint = "443 500"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoWEMRenderer
+    interactionProviderID = ""
+    autoApply = TRUE
+    autoUpdate = TRUE
+    autoClear = TRUE
+    enableCreaseAngle = TRUE
+    creaseAngle = 0
+    useHighlightSelected = FALSE
+    highlightColor = "1 0 0"
+    highlightIntensity = 0.5
+    faceRenderingMode = WEM_FACE_RENDERING_MODE_DOUBLE_SIDE
+    allowHits = TRUE
+    performPreHitTest = FALSE
+    cursorShape = CROSS_CURSOR
+    colorMode = WEM_COLOR_GENERAL
+    drawFaces = TRUE
+    faceDiffuseColor = "0.792156994342804 0.792156994342804 0.792156994342804"
+    useFaceAmbientColor = TRUE
+    faceAmbientColor = "0.266667008399963 0.266667008399963 0.266667008399963"
+    useFaceSpecularColor = TRUE
+    faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
+    faceAlphaValue = 1
+    faceShininessValue = 1
+    primitiveValueLists = ""
+    selectedPrimitiveValueList = LUT
+    selectedPrimitiveValueAlphaList = LUT
+    primitiveValueListValid = TRUE
+    primitiveValueListAlphaValid = TRUE
+    overwriteAlphaWithPVL = FALSE
+    wemPatchToRender = -1
+    maxWEMPatchIndex = -1
+    sendAdjacency = FALSE
+    selectedTab = 1
+  }
+}
+module WEMLoad {
+  internal  {
+    frame = "533 613 88 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "490 105 321 533"
+        sizeHint = "321 360"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = WEMLoad
+    id = 0
+    autoApply = TRUE
+    updateMode = AutoUpdate
+    overwriteLabelDescription = FALSE
+    label = ""
+    description = ""
+    shouldComputeNormals = FALSE
+    filename = $(NETWORK)/skull-stl-sample/skull_T1w_hires100307.stl
+    mirrorFaces = FALSE
+    generateEdges = TRUE
+    triangulateFaces = FALSE
+    triangulationMode = Strip
+  }
+}
+module SoExaminerViewer {
+  internal  {
+    frame = "365 233 136 56"
+    moduleGroupName = ""
+    windows  {
+      window _viewer {
+        geometry = "358 220 400 425"
+        sizeHint = "400 400"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoExaminerViewer
+    renderCaching = AUTO
+    boundingBoxCaching = AUTO
+    renderCulling = AUTO
+    pickCulling = AUTO
+    border = FALSE
+    background = "0 0 0"
+    transparency = BLEND
+    antialiasing = FALSE
+    antialiasingNumPasses = 1
+    hiResRendering = TRUE
+    useSampleBuffers = FALSE
+    numSamples = 8
+    grabKeyFocus = TRUE
+    enableKeyCommands = TRUE
+    snapshotFormat = SNAPSHOT_RGB
+    outputAviFile = ""
+    autoRedrawWhenRecording = TRUE
+    frameRate = 7
+    frameRateAvi = 15
+    outputSnapshotFile = none
+    outputSnapshotFileWritten = none
+    autoIncreaseFile = TRUE
+    showSnapshotWithShell = FALSE
+    snapCount = 0
+    inputDevicesList = ""
+    headlight = TRUE
+    decoration = TRUE
+    popupMenuEnabled = FALSE
+    viewing = TRUE
+    autoClipping = TRUE
+    drawStyle = VIEW_AS_IS
+    interactiveDrawStyle = VIEW_LOW_COMPLEXITY
+    viewAllFlag = FALSE
+    initialCameraOrientation = CAMERA_KEEP_AS_IS
+    applyCameraOrientation = CAMERA_KEEP_AS_IS
+    cameraType = CAMERA_PERSPECTIVE
+    autoApplyUserSettingOrientation = FALSE
+    userSettingOrientation = "0 0 1 0"
+    automaticViewAll = FALSE
+    storeCurrentState = TRUE
+    saveCamera = TRUE
+    cursor = TRUE
+    isCameraStored = TRUE
+    perspective = TRUE
+    stereoViewing = FALSE
+    stereoOffset = 3
+    height = 0.78539819
+    position = "-69.8859558105469 358.455352783203 -36.3294258117676"
+    orientation = "0.156560555100441 0.751566708087921 0.640809118747711 3.66782879829407"
+    nearDistance = 230.88086
+    farDistance = 532.86652
+    focalDistance = 367.00702
+    forceRedrawOnInteraction = FALSE
+    button1events = TO_VIEWER
+    button2events = TO_VIEWER
+    button3events = TO_VIEWER
+    keyEvents = TO_VIEWER
+    animationEnabled = FALSE
+    feedback = FALSE
+    feedbackSize = 32
+    mouseInteraction = ""
+    rotationAxis = "0 1 0"
+    rotationAngle = 360
+    rotationSteps = 80
+    recordRotation = TRUE
+    wheelZoomEnabled = TRUE
+    wheelRotationEnabled = TRUE
+  }
+}
+module WEMSave {
+  internal  {
+    frame = "629 429 120 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "578 260 508 174"
+        sizeHint = "508 174"
+        wasOpen = no
+      }
+      window "WEM Parameters" {
+        geometry = "591 340 199 149"
+        sizeHint = "199 149"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = WEMSave
+    autoApply = FALSE
+    autoUpdate = FALSE
+    autoClear = TRUE
+    listenToFinishingNotifications = FALSE
+    listenToRepaintNotifications = FALSE
+    listenToSelectionChangedNotifications = FALSE
+    filename = $(NETWORK)/100307
+    fileType = "Object File Format (.off)"
+    inWEMValid = TRUE
+    status = "Valid WEM connected"
+    shouldSaveNodeNormals = FALSE
+    shouldSaveNodeColors = FALSE
+    shouldSaveEdges = FALSE
+    shouldSaveFaceNormals = FALSE
+    shouldSavePVLs = TRUE
+  }
+}
+module RunPythonScript {
+  internal  {
+    frame = "777 293 160 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "300 264 780 300"
+        sizeHint = "780 300"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = RunPythonScript
+    in0 = ""
+    in1 = ""
+    in2 = ""
+    in3 = ""
+    in4 = ""
+    in5 = ""
+    in6 = ""
+    in7 = ""
+    in8 = ""
+    in9 = ""
+    inComment0 = in0
+    inComment1 = in1
+    inComment2 = in2
+    inComment3 = in3
+    inComment4 = in4
+    inComment5 = in5
+    inComment6 = in6
+    inComment7 = in7
+    inComment8 = in8
+    inComment9 = in9
+    autoApply0 = TRUE
+    autoApply1 = TRUE
+    autoApply2 = TRUE
+    autoApply3 = TRUE
+    autoApply4 = TRUE
+    autoApply5 = TRUE
+    autoApply6 = TRUE
+    autoApply7 = TRUE
+    autoApply8 = TRUE
+    autoApply9 = TRUE
+    out0 = ""
+    out1 = ""
+    out2 = ""
+    out3 = ""
+    out4 = ""
+    out5 = ""
+    out6 = ""
+    out7 = ""
+    out8 = ""
+    out9 = ""
+    outComment0 = out0
+    outComment1 = out1
+    outComment2 = out2
+    outComment3 = out3
+    outComment4 = out4
+    outComment5 = out5
+    outComment6 = out6
+    outComment7 = out7
+    outComment8 = out8
+    outComment9 = out9
+    initCode = "# For backward compatibility, set up CTX as alias for ctx
+CTX = ctx # ctx is the network's context, not RunPythonScript's"
+    wakeUpCode = ""
+    code = "*from mevis import *
+
+import os
+import re
+
+file_list=os.listdir('C:/Users/anari/Documents/voxelize/skull-stl-sample')
+
+for f in file_list:
+	ctx.field("WEMLoad.filename").value = 'C:/Users/anari/Documents/voxelize/skull-stl-sample/' + f
+
+	n_raw = re.match("skull_T1w_hires([0-9]*).*\", f)
+
+	n=n_raw.group(1)
+
+	ctx.field("WEMSave.filename").value = "C:/Users/anari/Documents/voxelize/" + n
+
+	ctx.field("WEMSave.apply").touch()*"
+    finalizeCode = ""
+    showFields = FALSE
+    showInitCode = FALSE
+    showWakeUpCode = FALSE
+    showCode = TRUE
+    showFinalizeCode = FALSE
+    showConsole = FALSE
+  }
+}
+connections  {
+  SoWEMRenderer.inWEM = WEMLoad.outWEM
+  SoExaminerViewer.children = "SoBackground.self SoWEMRenderer.self"
+  WEMSave.inWEM = WEMLoad.outWEM
+}
+networkModel = ""

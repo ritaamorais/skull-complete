@@ -1,4 +1,4 @@
-startDir = 'F:\HealthyMRI\Healthy-MRI-T1\sample'; %gets directory, ou entao especificar o directory
+startDir = 'F:\HealthyMRI\Healthy-MRI-T1\sample'; %specify directory
 
 % Get list of all subfolders.
 allSubFolders = genpath(startDir);

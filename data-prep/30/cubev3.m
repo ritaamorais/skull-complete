@@ -1,6 +1,6 @@
 data_path='F:\MAT\data-workflow\skull-mat\30';
 
-phases = {'train', 'test'};
+phases = {'test'};
 
 % for train and test phases
 for t = 1 : numel(phases)
@@ -20,7 +20,6 @@ for t = 1 : numel(phases)
 			        filename = [mat_list '\' mat_files(i).name];
 
 
-					%load('100206.mat', 'instance');
 					load(filename, 'instance');
 					defected=instance(:,:,:);
                     
@@ -126,7 +125,7 @@ for t = 1 : numel(phases)
                             fprintf('2. soma %d \n', soma);
                             fprintf('3. filename %s \n', filename);
 							if soma<20
-                                fprintf('4. hey %d \n', enough);
+                                %fprintf('4. hey %d \n', enough);
                                 continue;
                             end
                             enough=1;

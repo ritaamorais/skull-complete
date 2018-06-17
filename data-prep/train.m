@@ -14,7 +14,7 @@ for i=1 : length(mat_files)
 
 	load(filename);
 
-	dataset(i, :,:,:) = defected;
+	%dataset(i, :,:,:) = defected;
 
 	labels(i,:,:,:) = instance;
 	

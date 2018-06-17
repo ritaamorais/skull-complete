@@ -10,10 +10,9 @@ import torch
 from scipy.io import savemat
 from torch import nn
 
-import thirty.net as net
-from thirty import utils
+import net
+import utils
 
-#TODO: corrigir estes paths
 parser = argparse.ArgumentParser()
 parser.add_argument('--test_data_dir', default='./data/test_data.mat', help="Path containing the testing dataset")
 parser.add_argument('--model_dir', default='./logs/', help="Directory containing the model")

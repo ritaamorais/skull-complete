@@ -13,7 +13,6 @@ from torch import nn
 import net 
 import utils
 
-#TODO: corrigir estes paths
 parser = argparse.ArgumentParser()
 parser.add_argument('--i', default=25, help="Index of example instance for testing")
 parser.add_argument('--test_data_dir', default='./data/test_data.mat', help="Path containing the testing dataset")
@@ -58,7 +57,6 @@ def test_all(model, test_data, test_labels, tesize):
     #error = reconstructed - original input
     err = 0
 
-    #TODO: alterar este for para que os inputs sejam dados como (1,1,30,30,30) e não tudo de uma vez (222,1,30,30,30)
     for i in range(tesize):
         output = outputs[i]
 

@@ -37,10 +37,10 @@ def train(model, optimizer, loss_fn, train_data, trsize, batch_size): #lets see 
     summ = []
     loss_avg= utils.RunningAverage()
 
-    train_data.cuda()
-
-    labels=torch.reshape(train_data,(trsize,216000)) #60*60*60=216000
-
+    train_data=train_data.contiguous()
+    labels=train_data.view((trsize,216000)) #60*60*60=216000
+    
+    loss = None
     with tqdm(total=trsize) as pbar:
         for t in range(0, trsize, batch_size): #percorrer o dataset
 
@@ -50,37 +50,37 @@ def train(model, optimizer, loss_fn, train_data, trsize, batch_size): #lets see 
             k=0
         
             for i in range(t, min(t+batch_size,trsize)):
-	            input=train_data[i]
-	            target=labels[i]
-	            input.cuda()
-	            target.cuda()
+                input=train_data[i]
+                target=labels[i]
+                input.cuda()
+                target.cuda()
 
-	            inputs[k] = input
-	            targets[k]=target
-	            k=k+1
+                inputs[k] = input
+                targets[k]=target
+                k=k+1
 
-	            #zerar os gradientes - optimizer.zero_grad()
-	            optimizer.zero_grad() #clears the gradients of all optimized tensors
+                #zerar os gradientes - optimizer.zero_grad()
+                optimizer.zero_grad() #clears the gradients of all optimized tensors
 
-	            #compute model output
-	            outputs=model.forward(inputs)
+                #compute model output
+                outputs=model.forward(inputs)
 
-	            #calculate loss
-	            loss = loss_fn(outputs,targets)
-	            print(loss)
+                #calculate loss
+                loss = loss_fn(outputs,targets)
+                #print(loss)
 
-	            #calculate gradients == fazer backward da loss function
-	            loss.backward()
+                #calculate gradients == fazer backward da loss function
+                loss.backward()
 
-	            #performs updates using calculated gradients
-	            optimizer.step()
+                #performs updates using calculated gradients
+                optimizer.step()
 
             #update the average loss
-            loss_avg.update(loss.data[0])
+            loss_avg.update(loss.item())
 
             pbar.set_postfix(loss='{:05.3f}'.format(loss_avg()))
             pbar.update()
-
+    logging.info("Average Loss on this epoch: {}".format(loss_avg()))
 
 def train_and_evaluate(model, optimizer, loss_fn, train_data, trsize, num_epochs, batch_size, model_dir, restore_file=None):
 
@@ -131,6 +131,7 @@ if __name__ == '__main__':
 
     #LOAD TRAINING DATA
     train_data, trsize= data_loader.load_data(args.train_data_dir, 'labels')
+    train_data.cuda()
     logging.info("Number of training examples: {}".format(trsize))
 
     #initialize autoencoder

@@ -38,10 +38,10 @@ def train(model, optimizer, loss_fn, train_data, trsize, batch_size): #lets see 
     summ = []
     loss_avg= utils.RunningAverage()
 
-    train_data.cuda()
+    train_data=train_data.contiguous()
+    labels=train_data.view((trsize,27000))
 
-    labels=torch.reshape(train_data,(trsize,27000))
-
+    loss = None
     with tqdm(total=trsize) as pbar:
         for t in range(0, trsize, batch_size): #percorrer o dataset
 
@@ -68,7 +68,7 @@ def train(model, optimizer, loss_fn, train_data, trsize, batch_size): #lets see 
 
 	            #calculate loss
 	            loss = loss_fn(outputs,targets)
-	            print(loss)
+	            #print(loss)
 
 	            #calculate gradients == fazer backward da loss function
 	            loss.backward()
@@ -77,11 +77,12 @@ def train(model, optimizer, loss_fn, train_data, trsize, batch_size): #lets see 
 	            optimizer.step()
 
             #update the average loss
-            loss_avg.update(loss.data[0])
+            loss_avg.update(loss.item())
 
             pbar.set_postfix(loss='{:05.3f}'.format(loss_avg()))
             pbar.update()
 
+    logging.info("Average Loss on this epoch: {}".format(loss_avg()))
 
 def train_and_evaluate(model, optimizer, loss_fn, train_data, trsize, num_epochs, batch_size, model_dir, restore_file=None):
 
@@ -132,6 +133,7 @@ if __name__ == '__main__':
 
     #LOAD TRAINING DATA
     train_data, trsize= data_loader.load_data(args.train_data_dir, 'labels')
+    train_data.cuda()
     logging.info("Number of training examples: {}".format(trsize))
 
     #initialize autoencoder

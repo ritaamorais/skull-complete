@@ -17,7 +17,7 @@ Only the first two steps of this sequence are needed to extract surface mesh mod
 * **skull stripping** (`bse`)
 * **skull and scalp modelling** (`skullfinder`)
 
-**Output:** 4 DFS surface representation files of the brain, inner and outer skull surfaces and the scalp.
+**Output:** 4 DFS surface representation files of the brain, inner and outer skull surfaces and the scalp, for each subject.
 
 In order to use BrainSuite’s tools to automatically process all the 1113 T1w MRI scans in the dataset, the bash script `cortical_extraction.cmd`, which is provided along with the BrainSuite software, was adapted so that only the first two steps of the cortical surface extraction sequence are executed.
 

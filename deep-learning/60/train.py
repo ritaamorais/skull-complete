@@ -39,7 +39,7 @@ def train(model, optimizer, loss_fn, train_data, trsize, batch_size): #lets see 
 
     train_data=train_data.contiguous()
     labels=train_data.view((trsize,216000)) #60*60*60=216000
-    
+
     loss = None
     with tqdm(total=trsize) as pbar:
         for t in range(0, trsize, batch_size): #percorrer o dataset
@@ -80,6 +80,7 @@ def train(model, optimizer, loss_fn, train_data, trsize, batch_size): #lets see 
 
             pbar.set_postfix(loss='{:05.3f}'.format(loss_avg()))
             pbar.update()
+    
     logging.info("Average Loss on this epoch: {}".format(loss_avg()))
 
 def train_and_evaluate(model, optimizer, loss_fn, train_data, trsize, num_epochs, batch_size, model_dir, restore_file=None):

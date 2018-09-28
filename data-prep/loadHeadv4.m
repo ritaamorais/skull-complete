@@ -2,8 +2,10 @@ startDir = 'F:\HealthyMRI\Healthy-MRI-T1\sample'; %specify directory
 
 % Get list of all subfolders.
 allSubFolders = genpath(startDir);
+
 % Parse into a cell array.
 remain = allSubFolders;
+
 % Initialize variable that will contain the list of filenames so that we can concatenate to it.
 listOfFolderNames = {};
 while true
@@ -23,17 +25,15 @@ for k = 1 : numberOfFolders
 	
 	% Get ALL dfs files.
     
-    %inner skull
+   	%inner skull
 	filePattern_isk = sprintf('%s/*.inner_skull.dfs', thisFolder);
-    
 	baseFileNames_isk = dir(filePattern_isk);
-    numberOfInnerSkullFiles=length(baseFileNames_isk);
+    	numberOfInnerSkullFiles=length(baseFileNames_isk);
     
-    %outer skull
+    	%outer skull
 	filePattern_osk = sprintf('%s/*.scalp.dfs', thisFolder);
 	baseFileNames_osk = dir(filePattern_osk);
-   
-    numberOfOuterSkullFiles=length(baseFileNames_osk);
+   	numberOfOuterSkullFiles=length(baseFileNames_osk);
     
     if numberOfInnerSkullFiles >=1 && numberOfOuterSkullFiles >=1
         %STATEMENT

@@ -7,12 +7,12 @@ import torch
 import torch.optim as optim
 from tqdm import tqdm
 
-import thirty.net as net
-from thirty import utils
+import net
+import utils
 
 #argument parser
 parser=argparse.ArgumentParser()
-parser.add_argument('--train_data_dir', type=str, default='/home/morais/adapted/pycharm-skull-complete/data/train_data.mat', help="Path to the training dataset")
+parser.add_argument('--train_data_dir', type=str, default='./data/train_data.mat', help="Path to the training dataset")
 #parser.add_argument('--save_dir', type=str, default='./logs/')
 parser.add_argument('--epochs', type=int, default=500)
 parser.add_argument('--batch_size', type=int, default=1)

@@ -10,11 +10,11 @@ import torch
 from scipy.io import savemat
 from torch import nn
 
-import thirty.net as net
-from thirty import utils
+import net 
+import utils
 
-#TODO: corrigir estes paths
 parser = argparse.ArgumentParser()
+parser.add_argument('--i', default=25, help="Index of example instance for testing")
 parser.add_argument('--test_data_dir', default='./data/test_data.mat', help="Path containing the testing dataset")
 parser.add_argument('--model_dir', default='./logs/', help="Directory containing the model")
 
@@ -31,34 +31,32 @@ def test_all(model, test_data, test_labels, tesize):
     test_data.cuda()
 
     inputs = torch.Tensor(tesize, 1, 30, 30, 30).cuda()
-    outputs = torch.Tensor(tesize, 30*30*30).cuda()
+    outputs=torch.Tensor(tesize, 30*30*30).cuda()
     perfect_cubes = torch.Tensor(tesize, 1, 30, 30, 30).cuda()
 
     for k in range(tesize):
         input = test_data[k]
-        input = input.double()
-
+        input=input.reshape(1,1,30,30,30)
+        input = input.float()
+        input = input.cuda()
 
         perfect_input = test_labels[k]
         perfect_input = perfect_input.double()
 
         perfect_cubes[k] = perfect_input
         inputs[k] = input
-
-        input = input.cuda()
         output=model.forward(input)
         outputs[k] = output
 
     #inputs=inputs.cuda()
     #outputs=model.forward(inputs)
-    outputs=outputs.double()
+    #outputs=outputs.double()
     outputs=outputs.reshape(tesize, 1,30,30,30)
 
     #now that we have the output, estimate the error on the denoising task by only considering those voxels which were shut down at test time randomly
     #error = reconstructed - original input
     err = 0
 
-    #TODO: alterar este for para que os inputs sejam dados como (1,1,30,30,30) e não tudo de uma vez (222,1,30,30,30)
     for i in range(tesize):
         output = outputs[i]
 
@@ -164,14 +162,15 @@ if __name__ == '__main__':
 
     #...and test!
     #test all
-    #te_err = test_all(autoencoder, test_data, test_labels, tesize)
-    #print('the test error is ' + str(te_err) + '%')
+    te_err = test_all(autoencoder, test_data, test_labels, tesize)
+    logging.info("The test error is {} %".format(te_err))
 
-
+    """
     #------test instance-----------
     te_err, outputs=test_instance(autoencoder,145,test_data,test_labels,tesize)
-    logging.info("The test error is {} %".format(te_err))
+    logging.info("The test error is {} ".format(te_err))
 
     i=145
     filename= './recons'+str(i)
     save_output(outputs,filename)
+    """

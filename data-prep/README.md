@@ -21,4 +21,7 @@ Only the first two steps of this sequence are needed to extract surface mesh mod
 
 In order to use BrainSuite’s tools to automatically process all the 1113 T1w MRI scans in the dataset, the bash script `./bash-scripts/cortical_extraction.cmd`, which is provided along with the BrainSuite software, was adapted so that only the first two steps of the cortical surface extraction sequence are executed.
 
+## Skull Mesh Generation
+For this step, Matlab and the iso2mesh toolbox are required - http://iso2mesh.sourceforge.net/cgi-bin/index.cgi
 
+Running the Matlab script `./matlab-scripts/skull_mesh_stl.m` processes the inner and outer skull DFS surface files of each of the 1113 subjects in the dataset, by merging the inner and outer skull surfaces together in one single volumetric mesh and converting the resulting mesh to the STL file format. This results in 1113 STL files of 3D models of healthy skulls (with no cranial defects).

@@ -11,3 +11,6 @@ This repository is divided into two main folders:
 * `data-prep/`: contains the necessary scripts to pre-process the data, from collecting it from the Connectome Database until having it represented as a 4D array and ready to be given as input to the deep neural network.
 
 * `deep learning/`: contains the source code for implementing the volumetric denoising autoencoder in the deep learning framework PyTorch.
+
+
+:warning: Note that this code is written for research purposes only.

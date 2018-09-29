@@ -12,5 +12,5 @@ This repository is divided into two main folders:
 
 * `deep learning/`: contains the source code for implementing the volumetric denoising autoencoder in the deep learning framework PyTorch.
 
-
-:warning: Note that this code is written for research purposes only.
+---
+:warning: Note that this code was written for research purposes only.

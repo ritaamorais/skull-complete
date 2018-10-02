@@ -44,3 +44,5 @@ For example, to represent the skull mesh as a voxel cube of resolution of 24<sup
 This results in a 30<sup>3</sup> voxel cube.
 
 In my case, I did experiments on inputs with three different voxel resolutions: 30<sup>3</sup>, 60<sup>3</sup> and 120<sup>3</sup>.
+
+**Note:** it is necessary to have the MATLAB functions `polygon2voxel_double.m` and `polygon2voxel.m` in the same folder as the function `off_to_mat.m`

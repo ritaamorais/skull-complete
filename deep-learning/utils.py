@@ -6,16 +6,7 @@ import shutil
 import torch
 
 class RunningAverage():
-    """A simple class that maintains the running average of a quantity
-
-    Example:
-    ```
-    loss_avg = RunningAverage()
-    loss_avg.update(2)
-    loss_avg.update(4)
-    loss_avg() = 3
-    ```
-    """
+    """A simple class that maintains the running average of a quantity"""
 
     def __init__(self):
         self.steps = 0
@@ -32,14 +23,9 @@ class RunningAverage():
 def set_logger(log_path):
     """Set the logger to log info in terminal and file `log_path`.
     In general, it is useful to have a logger so that every output to the terminal is saved
-    in a permanent file. Here we save it to `model_dir/train.log`.
-    Example:
-    ```
-    logging.info("Starting training...")
-    ```
-    Args:
-        log_path: (string) where to log
+    in a permanent file.
     """
+
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
 
@@ -56,13 +42,13 @@ def set_logger(log_path):
 
 
 def save_checkpoint(state, is_best, checkpoint):
-    """Saves model and training parameters at checkpoint + 'last.pth.tar'. If is_best==True, also saves
-    checkpoint + 'best.pth.tar'
+    """Saves model and training parameters at checkpoint + 'last.pth.tar'.
+
     Args:
         state: (dict) contains model's state_dict, may contain other keys such as epoch, optimizer state_dict
-        is_best: (bool) True if it is the best model seen till now
         checkpoint: (string) folder where parameters are to be saved
     """
+
     filepath = os.path.join(checkpoint, 'last.pth.tar')
     if not os.path.exists(checkpoint):
         print("Checkpoint Directory does not exist! Making directory {}".format(checkpoint))
@@ -70,8 +56,6 @@ def save_checkpoint(state, is_best, checkpoint):
     else:
         print("Checkpoint Directory exists! ")
     torch.save(state, filepath)
-    if is_best:
-        shutil.copyfile(filepath, os.path.join(checkpoint, 'best.pth.tar'))
 
 
 def load_checkpoint(checkpoint, model, optimizer=None):

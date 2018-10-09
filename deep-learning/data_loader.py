@@ -1,6 +1,3 @@
-#loadmat
-#torch
-
 import torch
 from scipy.io import loadmat
 
@@ -8,7 +5,7 @@ def load_data(data_path, type):
     """
     loads the data from the mat files
     :param data_path: directory where the path to the mat file containing the data is located
-    :param type: labels or dataset (variable to load from the mat file)
+    :param type: name of the variable to load from the mat file
 
     :return: return data in tensor form and size (number of samples)
     """

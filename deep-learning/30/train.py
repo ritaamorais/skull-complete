@@ -107,8 +107,6 @@ def train_epochs(model, optimizer, loss_fn, train_data, trsize, num_epochs, batc
         utils.save_checkpoint({'epoch': epoch + 1,
                                'state_dict': model.state_dict(),
                                'optim_dict': optimizer.state_dict()},
-                              #is_best=is_best,
-                              False,
                               checkpoint=model_dir)
 
 

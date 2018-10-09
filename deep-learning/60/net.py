@@ -1,15 +1,14 @@
-"""Defines the neural network, losss function and metrics"""
+"""Defines the neural network and the loss function"""
+
 
 import torch
 from torch import nn, optim
 
 class VolAutoEncoder(nn.Module):
     """
-       This is the standard way to define your own network in PyTorch. You typically choose the components
-       (e.g. LSTMs, linear layers etc.) of your network in the __init__ function.
-       You then apply these layers on the input step-by-step in the forward function.
-       You can use torch.nn.functional to apply functions such as F.relu, F.sigmoid, F.softmax.
-       Be careful to ensure your dimensions are correct after each step.
+       This is the standard way to define a network in PyTorch. The components
+       (layers) of the network are defined in the __init__ function.
+       Then, in the forward function it is defined how to apply these layers on the input step-by-step.
     """
 
     def __init__(self):
@@ -47,7 +46,7 @@ class VolAutoEncoder(nn.Module):
         x = x.view((256, 5, 5, 5))
         x=x.unsqueeze(0)
         x = self.decoder(x)
-        x = x.view(216000)  # featuresOut=inD*inD*inD=60*60*60=216000
+        x = x.view(216000)  #60*60*60=216000
         x = self.sigmoid(x)
 
         return x
@@ -59,11 +58,3 @@ def loss_fn(outputs, targets):
     loss = nn.BCELoss()
 
     return loss(outputs, targets)
-
-def err(outputs,labels): #denoising error
-    return 0
-
-#maintain all metrics required in this dictionary - these are used in the training and evaluation loops
-metrics = {
-    'err': err,
-}

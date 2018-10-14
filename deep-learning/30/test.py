@@ -35,18 +35,21 @@ def test_all(model, test_data, test_labels, tesize):
 
     for k in range(tesize):
         input = test_data[k]
-        input = input.double()
-        input = input.cuda()
+        input=input.reshape(1,1,30,30,30)
+        input = input.float()
+        input=input.cuda()
 
         perfect_input = test_labels[k]
         perfect_input = perfect_input.double()
 
         perfect_cubes[k] = perfect_input
         inputs[k] = input
+        output=model.forward(input)
+        outputs[k]=output
 
-    inputs=inputs.cuda()
-    outputs=model.forward(inputs)
-    outputs=outputs.double()
+    #inputs=inputs.cuda()
+    #outputs=model.forward(inputs)
+    #outputs=outputs.double()
     outputs=outputs.reshape(tesize, 1,30,30,30)
 
     #After computing the outputs, estimate the error on the denoising task
@@ -79,7 +82,7 @@ def test_all(model, test_data, test_labels, tesize):
     return te_err
 
 
-def test_instance_recons_error(model, i, test_data, test_labels, tesize):
+def test_instance(model, i, test_data, test_labels, tesize):
 	"""
     this function is meant to feed the corrupted 3D test data to the network and save the output in binary format
     -- this output can then be read and visualized in matlab.
@@ -182,11 +185,11 @@ if __name__ == '__main__':
 
 	#------test all-----------
     #te_err = test_all(autoencoder, test_data, test_labels, tesize)
-    #logging.info("Test AlL: The test error is {} %".format(te_err))
+    #logging.info("Test All: The test error is {} %".format(te_err))
 
         
     #------test instance-----------w/ Recons Error and BCE loss
-    te_err, bce, outputs=test_instance_recons_error(autoencoder,i,test_data,test_labels,tesize)
+    te_err, bce, outputs=test_instance(autoencoder,i,test_data,test_labels,tesize)
     logging.info("Test instance {}: The reconstruction error is {} % and BCE Loss is {}".format(i,te_err,bce))
 
     filename= './recons'+str(i)

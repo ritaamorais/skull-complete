@@ -7,7 +7,7 @@ input to the network;
 * `utils.py` – contains utility functions for logging and saving and loading the model;
 
 * `30 or 60 or 120/` – folders where the necessary code for implementing the network to
-the resolutions of 303, 603 and 1203, respectively, are located.
+the resolutions of 30<sup>3</sup>, 60<sup>3</sup> and 120<sup>3</sup>, respectively, are located.
   - `data/` – folder where the training and testing data files are located;
   - `net.py` – defines the neural network architecture by initializing its layers and
 then by defining in the forward function how they are applied to the input. The

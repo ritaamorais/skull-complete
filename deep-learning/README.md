@@ -1,6 +1,6 @@
 # Deep Learning
 
-This folder contains the source code for implementing the Volumetric Denoising Autoencoder in **PyTorch**.
+This folder contains the source code for implementing the Volumetric Denoising Autoencoder (DAE) in **PyTorch**.
 The code is organized as follows:
 * `data_loader.py` – specifies how the data is loaded and with which form is given as
 input to the network;
@@ -21,3 +21,10 @@ test samples and outputs the completion and the average denoising error, or by
 feeding one defected instance from the test set to the network with the function
 `test_instance` and saving the completion output in a file that can later be
 visualized in Matlab.
+
+# Data
+Experiments with the Volumetric DAE were carried out for inputs with three different voxel resolutions: 30<sup>3</sup>, 60<sup>3</sup> and 120<sup>3</sup>, resulting in three different datasets with the same 3D skull models but at different voxel resolutions. For each of these datasets, all the instances of each training and testing set are stored in the same 4D array.
+
+Therefore, each dataset is stored as follows, taking into account that *d* denotes the chosen voxel resolution:
+* `train_data.mat` - .mat file which contains a 4D array variable named `healthy`, shaped as *(891, d, d, d)* and that stores the 891 instances of healthy skulls which are used for training;
+* `test_data.mat` - .mat file containing two 4D array variables named `healthy` and `defected`, both shaped as *(222, d, d, d)*. `healthy` stores the 222 instances of healthy skulls which are used for testing as ground-truth, and `defected` stores the 222 instances of defected skulls which are used for testing to be reconstructed.

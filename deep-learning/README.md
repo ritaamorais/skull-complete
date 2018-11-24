@@ -1,6 +1,6 @@
 # Deep Learning
 
-This folder contains the source code for implementing the Volumetric Denoising Autoencoder in PyTorch.
+This folder contains the source code for implementing the Volumetric Denoising Autoencoder in **PyTorch**.
 The code is organized as follows:
 * `data_loader.py` – specifies how the data is loaded and with which form is given as
 input to the network;
@@ -16,8 +16,8 @@ loss function is also specified in this file;
 inputs through the model, calculating the loss, performing backpropagation and
 updating the parameters;
   - `test.py` – contains the code for testing the model. Namely, there are two possible
-ways to test the model: with the function test_all, which takes all the
+ways to test the model: with the function `test_all`, which takes all the
 test samples and outputs the completion and the average denoising error, or by
 feeding one defected instance from the test set to the network with the function
-test_instance and saving the completion output in a file that can later be
+`test_instance` and saving the completion output in a file that can later be
 visualized in Matlab.

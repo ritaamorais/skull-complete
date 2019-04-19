@@ -15,6 +15,7 @@ This repository is divided into two main folders:
 
 # Reference
 If you use any of the provided code, please cite this paper:
+
 Morais, Ana, Jan Egger, and Victor Alves. "Automated Computer-aided Design of Cranial Implants Using a Deep Volumetric Convolutional Denoising Autoencoder." World Conference on Information Systems and Technologies. Springer, Cham, 2019.
 
 ---

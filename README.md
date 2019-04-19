@@ -12,5 +12,10 @@ This repository is divided into two main folders:
 
 * `deep learning/`: contains the source code for implementing the volumetric denoising autoencoder in the deep learning framework PyTorch.
 
+
+# Reference
+If you use any of the provided code, please cite this paper:
+Morais, Ana, Jan Egger, and Victor Alves. "Automated Computer-aided Design of Cranial Implants Using a Deep Volumetric Convolutional Denoising Autoencoder." World Conference on Information Systems and Technologies. Springer, Cham, 2019.
+
 ---
 :warning: Note that this code was written for research purposes only.
